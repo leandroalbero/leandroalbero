@@ -1,7 +1,7 @@
 <picture>
-  <source media="(max-width: 480px)" srcset="assets/man-narrow.svg">
-  <source media="(max-width: 720px)" srcset="assets/man-medium.svg">
-  <img src="assets/man-wide.svg" width="100%" alt="Terminal window showing the man page leandro(1): backend engineer, measures things">
+  <source media="(max-width: 480px)" srcset="assets/man-narrow-bf9f3305.svg">
+  <source media="(max-width: 720px)" srcset="assets/man-medium-0b5f3d70.svg">
+  <img src="assets/man-wide-30d8ea42.svg" width="100%" alt="Terminal window showing the man page leandro(1): backend engineer, measures things">
 </picture>
 
 This is a real man page: [leandro.1](leandro.1). More at [albero.dev](https://albero.dev).

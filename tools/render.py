@@ -1,4 +1,5 @@
 """Render leandro.1 into README.md and the terminal SVGs. Usage: python3 tools/render.py"""
+import hashlib
 import html
 import subprocess
 from pathlib import Path
@@ -70,11 +71,16 @@ def svg(width, name, fluid=False, font=FONT):
             left, mid, right = (html.escape(c.strip()) for c in cols)
             o.append(f'<text x="{PAD}" y="{y}">{left}</text><text x="50%" y="{y}" text-anchor="middle">{mid}</text><text x="100%" dx="-{PAD}" y="{y}" text-anchor="end">{right}</text>')
             continue
-        parts = "".join(
-            f'<tspan class="{st}">{html.escape(t)}</tspan>' if st else html.escape(t)
-            for t, st in spans(line)
-        )
-        o.append(f'<text x="{PAD}" y="{y}" xml:space="preserve" textLength="{len(plain(line)) * char:.1f}">{parts}</text>')
+        col = 0
+        for text, style in spans(line):
+            body = text.lstrip(" ")
+            start = col + len(text) - len(body)
+            col += len(text)
+            body = body.rstrip(" ")
+            if not body:
+                continue
+            cls = f' class="{style}"' if style else ""
+            o.append(f'<text x="{PAD + start * char:.1f}" y="{y}"{cls} xml:space="preserve" textLength="{len(body) * char:.1f}">{html.escape(body)}</text>')
     sy = body_top + (len(lines) + 1) * line_h
     sw = len(status) * char
     o.append(f'<rect x="{PAD}" y="{sy - 2}" width="{sw:.1f}" height="{line_h - 2}" fill="#c9d1d9"/>')
@@ -85,14 +91,19 @@ def svg(width, name, fluid=False, font=FONT):
     return lines
 
 
-wide = svg(76, "man-wide.svg", fluid=True, font=12)
-svg(46, "man-narrow.svg")
-svg(50, "man-medium.svg", fluid=True, font=12)
+for old in (ROOT / "assets").glob("man-*.svg"):
+    old.unlink()
+names = {}
+for key, width, kwargs in (("wide", 76, dict(fluid=True, font=12)), ("medium", 50, dict(fluid=True, font=12)), ("narrow", 46, {})):
+    svg(width, f"man-{key}.svg", **kwargs)
+    tmp = ROOT / "assets" / f"man-{key}.svg"
+    names[key] = f"man-{key}-{hashlib.sha256(tmp.read_bytes()).hexdigest()[:8]}.svg"
+    tmp.rename(ROOT / "assets" / names[key])
 text = "\n".join(plain(l) for l in man(60))
 readme = f"""<picture>
-  <source media="(max-width: 480px)" srcset="assets/man-narrow.svg">
-  <source media="(max-width: 720px)" srcset="assets/man-medium.svg">
-  <img src="assets/man-wide.svg" width="100%" alt="Terminal window showing the man page leandro(1): backend engineer, measures things">
+  <source media="(max-width: 480px)" srcset="assets/{names['narrow']}">
+  <source media="(max-width: 720px)" srcset="assets/{names['medium']}">
+  <img src="assets/{names['wide']}" width="100%" alt="Terminal window showing the man page leandro(1): backend engineer, measures things">
 </picture>
 
 This is a real man page: [leandro.1](leandro.1). More at [albero.dev](https://albero.dev).
