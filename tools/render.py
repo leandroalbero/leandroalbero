@@ -72,7 +72,7 @@ def svg(width, name):
     return lines
 
 
-wide = svg(80, "man-wide.svg")
+wide = svg(100, "man-wide.svg")
 svg(46, "man-narrow.svg")
 text = "\n".join(plain(l) for l in man(60))
 readme = f"""<picture>
