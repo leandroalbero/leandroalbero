@@ -72,12 +72,12 @@ def svg(width, name):
     return lines
 
 
-wide = svg(66, "man-wide.svg")
+wide = svg(80, "man-wide.svg")
 svg(46, "man-narrow.svg")
 text = "\n".join(plain(l) for l in man(60))
 readme = f"""<picture>
   <source media="(max-width: 600px)" srcset="assets/man-narrow.svg">
-  <img src="assets/man-wide.svg" alt="Terminal window showing the man page leandro(1): backend engineer, measures things">
+  <img src="assets/man-wide.svg" width="100%" alt="Terminal window showing the man page leandro(1): backend engineer, measures things">
 </picture>
 
 This is a real man page: [leandro.1](leandro.1). More at [albero.dev](https://albero.dev).
