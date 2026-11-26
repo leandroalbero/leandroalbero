@@ -1,31 +1,52 @@
 ```
-LEANDRO(1)                      User Commands                      LEANDRO(1)
+$ man leandro
+
+LEANDRO(1)              User Commands             LEANDRO(1)
 
 NAME
-       leandro - backend engineer who measures things
+     leandro - backend engineer, measures things
 
 SYNOPSIS
-       leandro [--python] [--homelab] [--fly] [idea ...]
+     leandro [idea ...]
 
 DESCRIPTION
-       Writes backend code at Luzia, mostly in Python. Lives in a village
-       in Alicante, Spain.
+     Writes backend code at Luzia, mostly in Python.
 
-       Given an idea, leandro instruments it and reports whether it was
-       worth doing. About half the time it was not. This is considered a
-       successful exit.
+     Given an idea, leandro instruments it, waits a few
+     weeks and reports whether it was worth doing.  With no
+     arguments, adds a sensor to something nearby.
 
-OPTIONS
-       --homelab
-              Run it at home instead of renting it. Implies being on call.
+EXIT STATUS
+     0      The idea was worth it.
 
-       --fly  Leave the terminal and take an ultralight up. Weather
-              permitting.
+     1      The idea was not worth it and a graph was
+            produced.  This is the common case and is not an
+            error.
+
+ENVIRONMENT
+     HOME   A village in Alicante, Spain.
+
+     TZ     Europe/Madrid.  The church clock next door runs
+            about 15 seconds ahead of it.  This has been
+            measured.
+
+     WEATHER
+            Consulted before flying ultralights.  Overrides
+            everything else on weekends.
+
+FILES
+     ~/homelab
+            A small datacenter's worth of hardware, at home.
 
 BUGS
-       Runs a small datacenter's worth of hardware at home. Cannot stop
-       adding dashboards. Also feeds a 3D printer.
+     On call for everything in FILES, unpaid.
+
+     Does not terminate while a 3D printer is running.
 
 SEE ALSO
-       albero.dev
+     albero.dev
+
+Alicante, Spain         November 2026             LEANDRO(1)
 ```
+
+This is a real man page: [leandro.1](leandro.1). More at [albero.dev](https://albero.dev).

@@ -1,0 +1,45 @@
+.TH LEANDRO 1 "November 2026" "Alicante, Spain" "User Commands"
+.SH NAME
+leandro \- backend engineer, measures things
+.SH SYNOPSIS
+.B leandro
+.RI [ idea " ...]"
+.SH DESCRIPTION
+Writes backend code at Luzia, mostly in Python.
+.PP
+Given an
+.IR idea ,
+.B leandro
+instruments it, waits a few weeks and reports whether it was worth doing.
+With no arguments, adds a sensor to something nearby.
+.SH EXIT STATUS
+.TP
+.B 0
+The idea was worth it.
+.TP
+.B 1
+The idea was not worth it and a graph was produced.
+This is the common case and is not an error.
+.SH ENVIRONMENT
+.TP
+.B HOME
+A village in Alicante, Spain.
+.TP
+.B TZ
+Europe/Madrid.
+The church clock next door runs about 15 seconds ahead of it.
+This has been measured.
+.TP
+.B WEATHER
+Consulted before flying ultralights.
+Overrides everything else on weekends.
+.SH FILES
+.TP
+.I ~/homelab
+A small datacenter's worth of hardware, at home.
+.SH BUGS
+On call for everything in FILES, unpaid.
+.PP
+Does not terminate while a 3D printer is running.
+.SH SEE ALSO
+albero.dev
