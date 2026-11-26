@@ -61,7 +61,7 @@ def svg(width, name):
             f'<tspan class="{st}">{html.escape(t)}</tspan>' if st else html.escape(t)
             for t, st in spans(line)
         )
-        o.append(f'<text x="{PAD}" y="{body_top + n * LINE + 12}" xml:space="preserve">{parts}</text>')
+        o.append(f'<text x="{PAD}" y="{body_top + n * LINE + 12}" xml:space="preserve" textLength="{len(plain(line)) * CHAR:.1f}">{parts}</text>')
     sy = body_top + (len(lines) + 1) * LINE
     sw = len(status) * CHAR
     o.append(f'<rect x="{PAD}" y="{sy - 2}" width="{sw:.1f}" height="{LINE - 2}" fill="#c9d1d9"/>')
@@ -74,12 +74,21 @@ def svg(width, name):
 
 wide = svg(66, "man-wide.svg")
 svg(46, "man-narrow.svg")
-alt = " ".join(" ".join(plain(l).split()) for l in wide if l.strip())
+text = "\n".join(plain(l) for l in man(60))
 readme = f"""<picture>
   <source media="(max-width: 600px)" srcset="assets/man-narrow.svg">
-  <img src="assets/man-wide.svg" width="{round(PAD * 2 + 66 * CHAR)}" alt="{html.escape(alt, quote=True)}">
+  <img src="assets/man-wide.svg" alt="Terminal window showing the man page leandro(1): backend engineer, measures things">
 </picture>
 
 This is a real man page: [leandro.1](leandro.1). More at [albero.dev](https://albero.dev).
+
+<details>
+<summary>Plain text</summary>
+
+```
+{text}
+```
+
+</details>
 """
 (ROOT / "README.md").write_text(readme)
