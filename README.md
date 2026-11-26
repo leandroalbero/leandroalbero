@@ -1,5 +1,6 @@
 <picture>
-  <source media="(max-width: 600px)" srcset="assets/man-narrow.svg">
+  <source media="(max-width: 480px)" srcset="assets/man-narrow.svg">
+  <source media="(max-width: 720px)" srcset="assets/man-medium.svg">
   <img src="assets/man-wide.svg" width="100%" alt="Terminal window showing the man page leandro(1): backend engineer, measures things">
 </picture>
 
