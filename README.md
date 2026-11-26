@@ -41,7 +41,7 @@ FILES
 BUGS
      On call for everything in FILES, unpaid.
 
-     Does not terminate while a 3D printer is running.
+     Will not go to bed while a 3D print is running.
 
 SEE ALSO
      albero.dev
