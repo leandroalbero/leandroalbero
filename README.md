@@ -1,7 +1,8 @@
-I'm Leandro. I write backend code in Python at [Luzia](https://www.luzia.com) and live in a village in Alicante, Spain, where the church bells are loud enough that I ended up measuring them.
+I'm Leandro. I write backend code in Python at [Luzia](https://www.luzia.com) and live in a village in Alicante, Spain. When something nearby catches my attention I instrument it, and a few weeks later there is a dashboard. This is the one about me:
 
-That is roughly how things go with me: something nearby catches my attention, I instrument it, and a few weeks later there is a graph. So far that covers the church clock (about 15 seconds fast), a year of my house's electricity minute by minute, my own home network, and a weather balloon passing 68 km away. Quite often the graph says my clever idea wasn't worth it. I count those as the successful ones.
+<picture>
+  <source media="(max-width: 600px)" srcset="assets/dashboard-narrow.svg">
+  <img src="assets/dashboard-wide.svg" width="100%" alt="A monitoring dashboard about Leandro. Day job: Python backend at Luzia. Church clock drift: +15 s, measured by ear. Farthest signal decoded: 68 km, a weather balloon. House electricity logged every minute for a year. About half of my ideas survive measurement. Homelab on-call pay: €0. Weekends: airborne, in ultralights. 3D printer: fed.">
+</picture>
 
-I would rather run things myself than rent them, so there is a small datacenter's worth of hardware at home that I am on call for, unpaid.
-
-Away from the terminal I fly ultralights and feed a 3D printer. Some of the above gets written up at [albero.dev](https://albero.dev).
+The longer versions are at [albero.dev](https://albero.dev).
